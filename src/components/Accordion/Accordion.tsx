@@ -10,7 +10,6 @@ function Accordion(props: AccPropsType) {
             <AccordionTitle title={props.titleValue}/>
             {props.collapsed && <AccordionBody/> }
         </div>
-
 }
 
 type AccPropsTitleType = {
