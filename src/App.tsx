@@ -8,8 +8,8 @@ import {TurnOnOff} from "./components/OnOff/OnOffComponent";
 function App() {
   return (
     <div>
-      <Accordion titleValue = {"Menu"} collapsed = {false} />
-      <Accordion titleValue = {"List"} collapsed = {true}/>
+      <Accordion titleValue = {"Menu"}  />
+      <Accordion titleValue = {"List"}  />
       <Rating value={5}/>
       <TurnOnOff/>
     </div>
