@@ -10,7 +10,7 @@ export function Rating(props: RatingPropsType) {
             <Star selected={props.value > 1}/>
             <Star selected={props.value > 2}/>
             <Star selected={props.value > 3}/>
-            <Star selected={props.value >= 4}/>
+            <Star selected={props.value > 4}/>
 
         </div>
     )
