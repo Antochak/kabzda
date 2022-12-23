@@ -16,8 +16,8 @@ type AccPropsTitleType = {
     setCollapse: (value: boolean)=>void
     collapse: boolean
 }
-function AccordionTitle(props: AccPropsTitleType) {
-    return <h3 onClick={()=>props.setCollapse(!props.collapse)}> --- {props.title} ---</h3>
+const AccordionTitle: React.FC<AccPropsTitleType> = ({setCollapse, collapse,title}) => {
+    return <h3 onClick={()=>setCollapse(!collapse)}> --- {title} ---</h3>
 }
 function AccordionBody() {
     return (
