@@ -1,38 +1,41 @@
-import React, {useState} from "react";
+import React from "react";
 
-export const TurnOnOff = () => {
-    const [color, setColor] = useState(false)
+type colorType = {
+    color: boolean
+    setColor: (color: boolean)=>void
+}
 
+export const TurnOnOff = (props: colorType) => {
     const onStyle = {
         width: '60px',
         height: '40px',
         border: '1px solid black',
         marginRight: '20px',
-        backgroundColor: color ? 'green' : 'white'
+        backgroundColor: props.color ? 'green' : 'white'
     }
     const offStyle = {
         width: '60px',
         height: '40px',
         border: '1px solid black',
         marginRight: '20px',
-        backgroundColor: color ? 'white' : 'red'
+        backgroundColor: props.color ? 'white' : 'red'
     }
     const indicator = {
         width: '40px',
         height: '40px',
         border: '1px solid black',
         borderRadius: '20px',
-        backgroundColor: color ? 'green' : 'red'
+        backgroundColor: props.color ? 'green' : 'red'
     }
     const wrap = {
         display: 'flex',
     }
 
-    const changeColor = (color: boolean) => setColor(color)
+
     return (
             <div style={wrap}>
-                <div style={onStyle} onClick={()=>changeColor(true)} >On</div>
-                <div style={offStyle} onClick={()=>changeColor(false)}>Off</div>
+                <div style={onStyle} onClick={()=>props.setColor(true)} >On</div>
+                <div style={offStyle} onClick={()=>props.setColor(false)}>Off</div>
                 <div style={indicator}></div>
             </div>
     )

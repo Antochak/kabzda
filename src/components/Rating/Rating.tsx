@@ -22,9 +22,7 @@ function Star(props: StarPropsType) {
         props.setValue(props.value)
         console.log(props.value)
     }
-    return  props.selected
-        ? <div onClick={changeValue}><b>Star</b></div>
-        : <div onClick={changeValue}>Star</div>
+    return <span onClick={changeValue}>{props.selected ? <b> Star </b> : 'Star '}</span>
 }
 
 // import React from "react";
