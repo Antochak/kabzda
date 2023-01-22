@@ -1,6 +1,6 @@
 import React from "react";
 
-type colorType = {
+export type colorType = {
     color: boolean
     setColor: (color: boolean)=>void
 }
