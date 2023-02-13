@@ -1,5 +1,4 @@
-import {useMemo, useState} from "react";
-
+import React, {useCallback, useMemo, useState} from "react";
 
 export default {
     title: 'UseMemo'
@@ -39,3 +38,44 @@ export const Example1 = () => {
         </div>
     )
 }
+
+export const AsUseCallback = () => {
+    console.log('AsUseCallback')
+    const [counter, setCounter] = useState(0)
+    const [books, setBook] = useState(['React', 'JS', 'CSS', 'HTML'])
+
+//обернули в Мемо функцию,
+    // const addBook = () => {
+    //     const newBook = [...books, 'Angular' + new Date().getTime()];
+    //     setBook(newBook)
+    // }
+    // const addBookMemo = useMemo(()=>{
+    //     return addBook
+    // },[books])
+
+    // укороченный вариант написания - использование useCallback
+    const addBookUC = useCallback(()=> {
+        const newBook = [...books, 'Angular' + new Date().getTime()];
+        setBook(newBook)
+    },[books])
+
+    return <>
+        <button onClick={()=>setCounter(counter + 1)}>+</button>
+
+        {counter}
+        {/*<Book addBook={addBookMemo}/>*/}
+        <Book addBook={addBookUC}/>
+    </>
+}
+
+type BookSecretPropsType = {
+    addBook: ()=>void
+}
+
+const BookSecret = (props: BookSecretPropsType) => {
+    console.log('BookSecret')
+    return <div>
+        <button onClick={()=>props.addBook()}>Add book</button>
+    </div>
+}
+const Book = React.memo(BookSecret)
